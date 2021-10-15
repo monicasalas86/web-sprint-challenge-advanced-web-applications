@@ -4,7 +4,8 @@ const articleService = ()=> {
     return axiosWithAuth()
     .get('/articles')
     .then(res => {
-        console.log(res)
+        // console.log(res.data)
+        return(res.data)
     })
     .catch(err => {
         console.log(err)

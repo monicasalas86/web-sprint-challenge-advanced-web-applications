@@ -24,8 +24,8 @@ const Login = (props) => {
         e.preventDefault();
         axios.post('http://localhost:5000/api/login', user)
             .then(res => {
-                // console.log(res.data)
-                localStorage.setItem(res.data.token, user)
+                console.log(res.data)
+                localStorage.setItem('token', res.data.token)
                 props.history.push('/view', user)
             })
             .catch(err => {
