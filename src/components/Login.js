@@ -3,15 +3,14 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 const initialState = {
-    credentials: {
-        username: '',
-        password: ''
-    }
+    username: '',
+    password: ''
 }
 
 const Login = (props) => {
     
     const [user, setUser] = useState(initialState);
+    const [error, setError] = useState();
 
     const handleChange = e => {
         setUser({
@@ -22,6 +21,11 @@ const Login = (props) => {
 
     const login = e => {
         e.preventDefault();
+
+        if (setUser.username !== 'Lambda' || setUser.password !== 'School') {
+            setError('Username or Password is not valid')
+        }
+
         axios.post('http://localhost:5000/api/login', user)
             .then(res => {
                 console.log(res.data)
@@ -56,9 +60,9 @@ const Login = (props) => {
                         onChange={handleChange}
                     />
                 </Label>
-                {/* COME BACK TO ERROR MESSAGE */}
                 <Button id='submit'>Log In</Button>
             </FormGroup>
+            <p id='error'>{error}</p>
         </ModalContainer>
     </ComponentContainer>);
 }

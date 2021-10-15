@@ -27,7 +27,6 @@ const View = (props) => {
         axiosWithAuth()
             .delete(`/articles/${id}`)
                 .then(res => {
-                    
                     setArticles(articles.filter(article => article.id !== id))
                 })
                 .catch(err => {
