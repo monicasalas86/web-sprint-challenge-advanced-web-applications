@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
 const initialArticle = {
@@ -16,6 +16,7 @@ const EditForm = (props)=> {
     const {handleEdit, handleEditCancel, editId} = props;
 
     const {id} = useParams();
+    const {push} = useHistory();
 
     useEffect(() => {
         axiosWithAuth()
@@ -42,7 +43,6 @@ const EditForm = (props)=> {
             .then(res => {
                 setArticle(res.data)
                 handleEdit(article);
-                console.log(article)
             })
             .catch(err => {
                 console.log(err)

@@ -35,6 +35,7 @@ const View = (props) => {
     }
 
     const handleEdit = (article) => {
+        setEditing(false)
     }
 
     const handleEditSelect = (id)=> {
